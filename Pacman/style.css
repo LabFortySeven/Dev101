@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html, body {
+    background-color: grey;
+    height: 100%;
+    width: 100%;
+}
+
+.tile {
+    height: 10vw;
+    width: 10vw;
+    display: inline-block;
+    margin-bottom: -2px;
+    margin-top: -2px;
+    object-fit: contain;
+    
+}
+
+.dot{
+    background: url("images/dot.png") no-repeat;
+    background-size: contain;
+}
+
+.pacman{
+    background-color: black;
+    background: url("images/pacman.gif") no-repeat;
+    background-size: contain;
+}
+
+.background{
+    background: url("images/empty.png") no-repeat;
+    background-size: contain;
+}
+
+.wall{
+    background: url("images/brick.png") no-repeat;
+    background-size: contain;
+}
+
+.ghost{
+    background: url("images/ghost.png") no-repeat;
+    background-size: contain;
+}
