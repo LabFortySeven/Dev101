@@ -2,25 +2,42 @@ console.log("Pacman started!")
 
 class GameBoard {
     constructor(){
+
+        this.playerHandle = prompt("Please enter your username", "Name");
+        document.getElementById("user").value = this.playerHandle;
         this.board = document.getElementById("board");
         // 1 = empty background, 2 = dot, 3 = wall, 4 = pacman, 5 = ghost
         
         //TODO:Update map array using enum
         this.map = [
-            [MapTiles.Wall,3,3,3,3],
-            [3,5,2,2,3],
-            [3,2,4,2,3],
-            [3,2,2,2,3],
-            [3,3,3,3,3]
-        ]
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], 
+            [1,5,3,3,3,1,3,1,3,3,3,3,3,5,1], 
+            [1,3,1,1,3,1,3,1,3,1,1,1,1,3,1], 
+            [1,3,1,3,3,3,3,3,3,3,3,3,1,3,1], 
+            [1,3,3,3,3,1,3,1,3,1,3,3,3,3,1], 
+            [1,3,1,1,3,1,1,1,1,1,3,1,1,3,1], 
+            [1,3,3,1,3,3,3,3,3,3,3,1,3,3,1], 
+            [1,1,3,1,3,1,1,3,1,1,3,1,3,1,1], 
+            [1,3,3,1,3,3,3,3,3,3,3,1,3,3,1], 
+            [1,3,1,1,3,1,1,1,1,1,3,1,3,3,1], 
+            [1,3,3,3,3,1,3,1,3,1,3,3,3,3,1], 
+            [1,3,1,3,3,3,3,4,3,3,3,3,1,3,1], 
+            [1,3,1,3,1,1,3,1,3,1,1,1,3,3,1], 
+            [1,5,3,3,3,3,3,3,3,3,3,3,3,5,1], 
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ];
+
 
         this.score = 0;
 
         //create a pacman
-        this.pacman = new Pacman(2,2,this.map);
+        this.pacman = new Pacman(7,11,this.map);
 
-        //create a ghost
+        //create 4 ghosts
         this.clyde = new Ghost(1,1,this.map);
+        this.blinky = new Ghost(1,13,this.map);
+        this.pinky = new Ghost(13,1,this.map);
+        this.inky = new Ghost(13,13,this.map);
 
         document.addEventListener('keydown', this.handleKeyboardEvent.bind(this));
     }
@@ -56,15 +73,27 @@ class GameBoard {
 
         //update the new position of pacman
         this.map[this.pacman.y][this.pacman.x] = MapTiles.Pacman;
+
+        //update the score to submit 
+        document.getElementById("scoreToSubmit").value = this.score;
     }
 
     update(){
-        //empty previous position of ghost
+        //empty previous positions of ghost
         this.map[this.clyde.y][this.clyde.x] = MapTiles.Dot;
-        //move ghost
+        this.map[this.blinky.y][this.blinky.x] = MapTiles.Dot;
+        this.map[this.inky.y][this.inky.x] = MapTiles.Dot;
+        this.map[this.pinky.y][this.pinky.x] = MapTiles.Dot;
+        //move ghosts
         this.clyde.move();
-        //update new ghost position
+        this.blinky.move();
+        this.inky.move();
+        this.pinky.move();
+        //update new ghost positions
         this.map[this.clyde.y][this.clyde.x] = MapTiles.Ghost;
+        this.map[this.blinky.y][this.blinky.x] = MapTiles.Ghost;
+        this.map[this.inky.y][this.inky.x] = MapTiles.Ghost;
+        this.map[this.pinky.y][this.pinky.x] = MapTiles.Ghost;
 
         this.drawBoard();
     }
@@ -101,7 +130,6 @@ class GameBoard {
     }
 
 }
-
 
 let gameBoard = new GameBoard();
 gameBoard.drawBoard();

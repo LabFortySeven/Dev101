@@ -17,12 +17,26 @@
         <div id="board"></div>
 
     </div>
+    
+    <div id="submitScoreForm">
+        <form action="submitHighscore.php" method="get">
+
+            <input type="text" name="user" id="user">
+            <input type="number" name="score" id="scoreToSubmit">
+            <input type="submit" value="Submit Score">
+    
+        </form>
+
+    </div>
 
     <script src="MapValues.js"></script>
     <script src="Character.js"></script>
     <script src="Ghost.js"></script>
     <script src="Pacman.js"></script>
     <script src="game.js"></script>
+
+    
+    
     
    
 </body>
