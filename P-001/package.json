@@ -1,0 +1,24 @@
+{
+  "name": "p001",
+  "version": "0.0.1",
+  "description": "Twitch Chatbot to Remotely Control Lego Mindstorms Robot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LabFortySeven/Dev101.git"
+  },
+  "author": "Medhat Riad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LabFortySeven/Dev101/issues"
+  },
+  "homepage": "https://github.com/LabFortySeven/Dev101#readme",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "serialport": "^9.0.7",
+    "tmi.js": "^1.8.3"
+  }
+}
